@@ -1,4 +1,14 @@
-node_modules
-.next
-.env.local
+# Dependencies and build output
+node_modules/
+.next/
+out/
+.vercel/
+
+# Private environment variables
+.env
+.env.*
+!.env.example
+
+# Logs and OS
 *.log
+.DS_Store

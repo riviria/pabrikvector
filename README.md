@@ -1,35 +1,25 @@
-# Pabrik Vector — Website v4
+# Pabrik Vector — Perbaikan error deploy Vercel
 
-Website katalog desain sekali beli dan jasa desain custom, dibuat dengan Next.js 14 (App Router), React, TypeScript, Tailwind CSS, dan Lucide React.
+Proyek Next.js + Tailwind CSS dari kode yang dikirim, ditambah file konfigurasi yang dibutuhkan.
 
-## Menjalankan di komputer
+## Yang diperbaiki
+- `app/shop/[slug]/page.tsx`: hapus pemeriksaan status `sold` yang tidak dapat dicapai setelah TypeScript mempersempit status menjadi `available`.
+- Produk yang sudah terjual tidak memiliki halaman detail yang bisa dipesan; URL detail produk terjual memanggil `notFound()`. Di katalog, produk terjual tetap dibuka dalam popup gambar melalui komponen `ProductCard`.
+- Konfigurasi Next.js, Tailwind, TypeScript, PostCSS dan `.gitignore` disertakan karena tidak ada di `code.zip`.
 
+## Menjalankan
 ```bash
 npm install
+npm run build
 npm run dev
 ```
 
-Buka http://localhost:3000.
+**Validasi:** 12 file TypeScript/TSX telah lolos pemeriksaan sintaks menggunakan transpiler TypeScript. Build penuh belum bisa diuji di lingkungan ini karena paket npm tidak tersedia di cache dan instalasi dependency gagal. Jalankan `npm run build` secara lokal atau deploy untuk verifikasi.
 
-## Update v4
-
-- Produk **Terjual** dalam katalog membuka lightbox gambar saja saat diklik; tidak menampilkan halaman detail, harga, atau tombol pemesanan. Tutup melalui tombol X, klik latar, atau Escape.
-- Halaman **Jasa Desain** mempunyai enam jenis contoh pesanan, termasuk desain aplikasi dan aset marketplace seperti Canva / Adobe Stock.
-- Bagian **Cara Memesan Jasa** didesain ulang menjadi kartu langkah kontras dengan ikon dan CTA.
-- UX copy tombol percakapan disederhanakan: “Chat Kami” dan “Ceritakan Proyekmu” (serta versi Inggrisnya).
-- Bottom navigation mobile dari versi sebelumnya tetap dipertahankan.
-
-## Ubah konten
-
-- `lib/data.ts`: produk, status tersedia/terjual, kategori, nominal, dan nomor WhatsApp (`6283125562186`).
-- `lib/i18n.ts`: teks terjemahan UI Bahasa Indonesia dan Inggris.
-- `app/services/page.tsx`: enam contoh layanan dan proses pemesanan.
-- `public/art/`: ilustrasi SVG contoh; ganti dengan desain final.
-- `app/about/page.tsx`: logo klien masih berupa placeholder.
-- `app/contact/page.tsx`: email masih berupa placeholder dan perlu diganti.
-
-## Catatan
-
-Status produk masih diatur manual di `lib/data.ts`. Tidak ada dashboard, checkout, atau pembayaran otomatis. Pengalihan ke WhatsApp adalah tautan dengan pesan yang terisi otomatis; transaksi harus dikonfirmasi penjual.
-
-Folder `node_modules`, `.next`, dan file rahasia dikecualikan oleh `.gitignore`. Jangan upload folder dependencies ke GitHub.
+## GitHub
+Salin file hasil ekstraksi ke root repository lalu jalankan:
+```bash
+git add .
+git commit -m "Fix Vercel TypeScript build error"
+git push
+```

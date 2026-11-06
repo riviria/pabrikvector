@@ -15,3 +15,20 @@
 .mobile-nav-item:active .mobile-nav-icon{transform:scale(.92)}
 .mobile-nav-item:focus-visible{outline:2px solid #f15a32;outline-offset:-3px}
 @media(max-width:767px){body{padding-bottom:calc(65px + env(safe-area-inset-bottom))}.wa-fab{width:54px;height:54px;min-height:54px;padding:0;justify-content:center}.wa-panel{bottom:66px}}
+
+/* Sold archive: image-only lightbox */
+.sold-preview-backdrop{position:fixed;inset:0;z-index:100;background:rgba(18,17,16,.82);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:20px;animation:previewFade .22s ease-out}
+.sold-preview-dialog{position:relative;width:min(100%,800px);background:#F9F8F5;border-radius:24px;overflow:hidden;box-shadow:0 25px 100px rgba(0,0,0,.3);animation:previewPop .25s ease-out}
+.sold-preview-art{position:relative;height:min(72vh,680px);min-height:250px}
+.sold-preview-close{position:absolute;right:16px;top:16px;z-index:2;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:white;color:#22201F;box-shadow:0 4px 18px rgba(0,0,0,.12);transition:transform .2s}
+.sold-preview-close:hover{transform:rotate(90deg)}
+.sold-preview-caption{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 25px;background:#F9F8F5}
+@keyframes previewFade{from{opacity:0}to{opacity:1}}@keyframes previewPop{from{transform:translateY(15px) scale(.98);opacity:.5}to{transform:translateY(0) scale(1);opacity:1}}
+/* Custom service showcase and standout order flow */
+.service-example-card{transition:transform .3s ease,box-shadow .3s ease}
+.service-example-card:hover{transform:translateY(-5px);box-shadow:0 18px 35px rgba(37,32,25,.09)}
+.service-process-section{background:#22201F;position:relative}
+.service-process-section::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;border:85px solid rgba(241,90,50,.055);right:-200px;top:-160px;pointer-events:none}
+.service-process-card{background:#34312F;border:1px solid rgba(255,255,255,.10);transition:background .25s ease,transform .25s ease,border-color .25s ease}
+.service-process-card:hover{background:#403632;transform:translateY(-6px);border-color:rgba(255,174,141,.5)}
+@media(prefers-reduced-motion:reduce){.sold-preview-backdrop,.sold-preview-dialog{animation:none}}
